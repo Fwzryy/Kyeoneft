@@ -96,6 +96,16 @@ body {
   font-family: cocoFont;
 }
 /** START NAVBAR **/
+@media (max-width: 768px) {
+  .navbar-menu {
+    flex-direction: column;
+    display: none;
+  }
+
+  .navbar-menu.active {
+    display: flex;
+  }
+}
 a {
   text-decoration: none;
 }
@@ -269,7 +279,7 @@ a {
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
   transform: translateY(20px);
   padding-top: 20px; /* Menambahkan padding di bagian atas dropdown */
-  z-index: 3;
+  z-index: 100;
 }
 .dropdown .item {
   display: flex;
@@ -408,7 +418,6 @@ a {
 
 
 .frame-text {
-
   height: 20rem;
 }
 
@@ -417,7 +426,7 @@ a {
   font-size: clamp(2em, 8vw, 6em);
   line-height: 1em;
 
-  margin-top: 30px;
+  margin-top: 90px;
   line-height: 7.5rem;
 
 }
@@ -586,4 +595,18 @@ border-right: 1px solid  rgba(255, 255, 255, 0.277);
   }
 }
 
+::-webkit-scrollbar{
+  width: 10px;
+}
+::-webkit-scrollbar-track{
+  background: #d1e5ff;
+}
+::-webkit-scrollbar-thumb{
+  background: linear-gradient(#642bff, #ff22e6);
+  border-radius: 100px;
+}
+::-webkit-scrollbar-thumb:hover{
+  background: linear-gradient(#8f67ff, #ffa0f4);
+  border-radius: 100px;
+}
 

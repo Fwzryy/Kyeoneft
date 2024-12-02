@@ -122,23 +122,130 @@ CounterObserver.observe(section_counter);
       trigger: ".frame-text",
       toggleActions: "restart reset restart reset"
   },
-    y: -100,
+    y: 100,
     duration: 2,
     ease: "elastic"
   }),
-  gsap.from(".text", {
-    x: -200,
-    opacity: 0,
-    duration: 1,
-    delay: 0.5,
-    ease: "back"
-  }),
-  gsap.from(".navbar-menu", {
-    y: -200,
-    opacity: 0,
+    gsap.fromTo(
+      ".text-h1",
+      { x: "-100%", opacity: 0 }, // Mulai di atas dengan transparansi 0
+      {
+        x: "0%",
+        opacity: 1,
+        duration: 1.9,
+        ease: "power3.out",
+      }),
+      gsap.fromTo(
+        ".text-h1 span",
+        { y: "100%", opacity: 0 }, // Mulai di bawah
+        {
+          y: "0%",
+          opacity: 1,
+          duration: 2,
+          delay: 0.7, // Mulai setelah teks utama muncul
+          ease: "bounce.out",
+        }
+      ),
+      gsap.fromTo(
+        ".text-p",
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          delay: 1.3, // Setelah h1 selesai
+          ease: "power2.out",
+        }
+      );
+      gsap.fromTo(
+        ".btn-check",
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          delay: 1.2, // Setelah paragraf selesai
+          ease: "power2.out",
+        }
+      );
+
+      gsap.fromTo(
+        ".navbar",
+        { y: -100, opacity: 0 }, // Navbar muncul dari atas
+        { y: 0, opacity: 1, duration: 1, ease: "power3.out" }
+      );
+    
+      gsap.fromTo(
+        ".navbar-menu li",
+        { y: 50, opacity: 0 },
+        { y: 0, opacity: 1, stagger: 0.2, duration: 1, ease: "power3.out" }
+      );
+    
+      gsap.fromTo(
+        ".btn-getinfo",
+        { scale: 0.8, opacity: 0 },
+        { scale: 1, opacity: 1, duration: 1, delay: 1, ease: "elastic.out(1, 0.5)" }
+      );
+  
+
+  gsap.from(".section_counter", {
+    scrollTrigger: {
+      trigger: ".section_counter",
+      toggleActions: "restart reset restart reset"
+  },
+    y: 100,
     duration: 3,
-    delay: 0.1,
-    ease: "back"
+    ease: "elastic"
   })
+
+  gsap.fromTo(
+    ".cardA-1", 
+    { y: 200, opacity: 0 }, // State awal
+    { 
+      y: 0, 
+      opacity: 1, // State akhir
+      duration: 1, 
+      scrollTrigger: {
+        trigger: ".cardA-1", // Elemen yang memicu scroll
+        start: "top 80%", // Mulai saat elemen masuk viewport
+        end: "top 20%", // Berakhir saat elemen mencapai posisi tertentu
+      }
+    }
+  );
+  gsap.fromTo(
+    ".cardA-2", 
+    { y: 200, opacity: 0 }, // State awal
+    { 
+      y: 0, 
+      opacity: 1, // State akhir
+      duration: 1, 
+      delay:0.5,
+      scrollTrigger: {
+        trigger: ".cardA-2", // Elemen yang memicu scroll
+        start: "top 80%", // Mulai saat elemen masuk viewport
+        end: "top 20%", // Berakhir saat elemen mencapai posisi tertentu
+       
+      }
+    }
+  );
+  gsap.fromTo(
+    ".cardA-3", 
+    { y: 200, opacity: 0 }, // State awal
+    { 
+      y: 0, 
+      opacity: 1, // State akhir
+      duration: 1, 
+      delay:1,
+      scrollTrigger: {
+        trigger: ".cardA-3", // Elemen yang memicu scroll
+        start: "top 80%", // Mulai saat elemen masuk viewport
+        end: "top 20%", // Berakhir saat elemen mencapai posisi tertentu
+      
+      }
+    }
+  );
+
+
+
  });
 
