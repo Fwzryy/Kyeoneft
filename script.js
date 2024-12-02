@@ -113,3 +113,32 @@ let CounterObserver = new IntersectionObserver(
 
 CounterObserver.observe(section_counter);
 
+
+ document.addEventListener("DOMContentLoaded", (event) => {
+  gsap.registerPlugin(ScrollTrigger,ScrollToPlugin)
+  // gsap code here!
+  gsap.from(".frame-text", {
+    scrollTrigger: {
+      trigger: ".frame-text",
+      toggleActions: "restart reset restart reset"
+  },
+    y: -100,
+    duration: 2,
+    ease: "elastic"
+  }),
+  gsap.from(".text", {
+    x: -200,
+    opacity: 0,
+    duration: 1,
+    delay: 0.5,
+    ease: "back"
+  }),
+  gsap.from(".navbar-menu", {
+    y: -200,
+    opacity: 0,
+    duration: 3,
+    delay: 0.1,
+    ease: "back"
+  })
+ });
+

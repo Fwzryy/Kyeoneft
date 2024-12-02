@@ -31,9 +31,8 @@
   flex-direction: row;
   justify-content:space-between;
   align-items: center;
-  margin-bottom: 23rem;
+  margin-bottom: 16rem;
 
-  
 }
 
 .card__article {
@@ -41,7 +40,9 @@
   overflow: hidden;
   border-radius: 1.5rem;
   transition: all 1s ease;
-  border: 2px dashed;
+  border: 2px dashed rgb(205, 255, 208);
+  height: 300px;
+  width: inherit;
 
 }
 .card__article:hover{
@@ -52,9 +53,9 @@
 
 }
 .card__img {
-  width: 328px;
-  height: 300;
+  height: 100%;
   border-radius: 1.5rem;
+
 }
 
 
@@ -184,7 +185,7 @@
     grid-template-columns: repeat(3, 1fr);
   }
   .card__img {
-    width: 348px;
+    width: 448px;
   }
   .card__data {
     width: 316px;
