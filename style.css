@@ -232,7 +232,7 @@ a {
   margin: 0;
   padding: 10px 30px;
   border-radius: 30px;
-  background-color: #000000; 
+  background: linear-gradient(90deg, rgba(53,0,88,1) 35%, rgba(29,0,43,1) 100%); 
   justify-content: space-between;
   /* border: 1px solid white; */
 }
@@ -521,20 +521,6 @@ border-right: 1px solid  rgba(255, 255, 255, 0.277);
   letter-spacing: 2px;
   margin-top: 10px;
 }
-
-/* .autoShow {
-  animation: autoShowAnimation both;
-  animation-timeline: view(40% 30%);
-}
-@keyframes autoShowAnimation {
-  from {
-    opacity: 0;
-    transform: translateY(200px)  scale(0.3);
-  }to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-} */
 
 
 
