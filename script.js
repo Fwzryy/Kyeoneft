@@ -171,22 +171,80 @@ CounterObserver.observe(section_counter);
 
       gsap.fromTo(
         ".navbar",
-        { y: -100, opacity: 0 }, // Navbar muncul dari atas
-        { y: 0, opacity: 1, duration: 1, ease: "power3.out" }
+        { y: -100, opacity: 0 }, // Navbar mulai di luar layar (ke atas)
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".navbar", // Elemen yang memicu animasi
+            start: "top top", // Mulai ketika elemen muncul di bagian atas viewport
+            toggleActions: "play none none reverse", // Kontrol animasi (play saat scroll, reverse saat kembali)
+          },
+        }
       );
     
+      // Animasi menu navbar
       gsap.fromTo(
         ".navbar-menu li",
-        { y: 50, opacity: 0 },
-        { y: 0, opacity: 1, stagger: 0.2, duration: 1, ease: "power3.out" }
+        { opacity: 0, y: 50 }, // Menu mulai tidak terlihat dan dari bawah
+        {
+          opacity: 1,
+          y: 0,
+          stagger: 0.2, // Menunda setiap elemen untuk animasi bertahap
+          duration: 0.8,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".navbar", // Sama seperti navbar
+            start: "top top",
+          },
+        }
       );
     
+      // Animasi tombol Get Info
       gsap.fromTo(
         ".btn-getinfo",
         { scale: 0.8, opacity: 0 },
-        { scale: 1, opacity: 1, duration: 1, delay: 1, ease: "elastic.out(1, 0.5)" }
-      );
-  
+        {
+          scale: 1,
+          opacity: 1,
+          duration: 1,
+          ease: "elastic.out(1, 0.5)",
+          scrollTrigger: {
+            trigger: ".navbar", // Animasi dipicu oleh navbar
+            start: "top top",
+            toggleActions: "play none none reverse",
+          },
+        }
+      )
+
+//> GSAP Dropdown Animation
+gsap.utils.toArray(".navbar-menu > li").forEach((menu) => {
+  const dropdown = menu.querySelector(".dropdown");
+
+  if (dropdown) {
+    // Timeline GSAP untuk Animasi Masuk dan Keluar
+    const tl = gsap.timeline({
+      paused: true,
+      defaults: { duration: 0.3, ease: "power3.out" },
+    });
+
+    tl.to(dropdown, {
+      visibility: "visible",
+      opacity: 1,
+      transform: "translateY(0)",
+    });
+
+    // Hover Event untuk Menjalankan Animasi
+    menu.addEventListener("mouseenter", () => tl.play());
+    menu.addEventListener("mouseleave", () => tl.reverse())
+
+    dropdown.addEventListener("mouseenter", () => tl.play());
+    dropdown.addEventListener("mouseleave", () => tl.reverse());
+
+  }
+})
 
   gsap.from(".section_counter", {
     scrollTrigger: {
